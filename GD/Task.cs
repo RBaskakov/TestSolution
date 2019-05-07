@@ -8,7 +8,7 @@ namespace Task
     {
         private decimal mBaseSalary;
         private DateTime dJoinedDate;
-        private string mErrorMessage; 
+        private string mErrorMessage; // Error message
         public Staff(string name, decimal mBaseSalary, DateTime JoinedDate)
         {
             this.Name = name; // staff name
