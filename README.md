@@ -7,6 +7,7 @@ Employee salary - base salary plus 3% for each year they have worked with the co
 Manager salary - base salary plus 5% for each year they have worked with the company (but not more than 40% of the base salary), plus 0.5% of salaries of their first level subordinates.
 Sales salary - base salary plus 1% for each year they have worked with the company (but not more than 35% of the base salary) plus 0.3% of salaries of their subordinates of any level.
 Staff members (except Employee) can have any number of subordinates of any type.
+
 REQUIREMENTS
 Create a class library that describes this model, and implement an algorithm that calculates salary of any staff member at an arbitrary time (as well as calculate the sum of salaries of all staff members of the company).
 The system must be verified by unit-tests (100% code coverage is not necessary, but the tests should demonstrate that the business logic works correctly).
