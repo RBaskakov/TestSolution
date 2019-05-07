@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Task;
+
 namespace TaskTest
 {
     [TestClass]
@@ -14,11 +15,14 @@ namespace TaskTest
             decimal BaseSalary = 200M;
             DateTime DateJoined = new DateTime(2013, 1, 1);
             decimal EхpectedSalary = 236M;
+
             //act
             Employee e = new Employee(Name, BaseSalary, DateJoined);
             decimal ActualSalary = e.Salary;
             // assert
+            if (e.ErrorMessage != "") { Assert.Fail(e.ErrorMessage); }            
             Assert.AreEqual(EхpectedSalary, ActualSalary);
+            
         }
         [TestMethod]
         public void TestEmployeeLongWorkSalary()
@@ -28,10 +32,14 @@ namespace TaskTest
             decimal BaseSalary = 200M;
             DateTime DateJoined = new DateTime(2003, 1, 1);
             decimal EхpectedSalary = 260M;
+
             //act
+
             Employee e = new Employee(Name, BaseSalary, DateJoined);
             decimal ActualSalary = e.Salary;
+
             // assert
+            if (e.ErrorMessage != "") { Assert.Fail(e.ErrorMessage); }
             Assert.AreEqual(EхpectedSalary, ActualSalary);
         }
         [TestMethod]
@@ -42,10 +50,14 @@ namespace TaskTest
             decimal BaseSalary = 300M;
             DateTime DateJoined = new DateTime(2014, 1, 1);
             decimal EхpectedSalary = 375M;
+
             //act
+
             Manager m = new Manager(Name, BaseSalary, DateJoined);
             decimal ActualSalary = m.Salary;
+
             // assert
+            if (m.ErrorMessage != "") { Assert.Fail(m.ErrorMessage); }
             Assert.AreEqual(EхpectedSalary, ActualSalary);
         }
         [TestMethod]
@@ -56,10 +68,14 @@ namespace TaskTest
             decimal BaseSalary = 300M;
             DateTime DateJoined = new DateTime(2004, 1, 1);
             decimal EхpectedSalary = 420M;
+
             //act
+
             Manager m = new Manager(Name, BaseSalary, DateJoined);
             decimal ActualSalary = m.Salary;
+
             // assert
+            if (m.ErrorMessage != "") { Assert.Fail(m.ErrorMessage); }
             Assert.AreEqual(EхpectedSalary, ActualSalary);
         }
         [TestMethod]
@@ -72,17 +88,24 @@ namespace TaskTest
             decimal BaseSalaryEmployee2 = 160M;
             DateTime DateJoined = new DateTime(2014, 1, 1);
             decimal EхpectedSalaryManager = 376.3M;
+
             //act
+
             Manager m = new Manager(Name, BaseSalaryManager, DateJoined);
             Employee e1 = new Employee(Name, BaseSalaryEmployee1, DateJoined);
             e1.Supervisor = m;
             Employee e2 = new Employee(Name, BaseSalaryEmployee2, DateJoined);
             e2.Supervisor = m;
+            
             decimal ActualSalaryManager = m.Salary;
+
             // assert
+            if (m.ErrorMessage != "") { Assert.Fail(m.ErrorMessage); }
+            if (e1.ErrorMessage != "") { Assert.Fail(e1.ErrorMessage); }
+            if (e2.ErrorMessage != "") { Assert.Fail(e2.ErrorMessage); }
             Assert.AreEqual(EхpectedSalaryManager, ActualSalaryManager);
         }
-        [TestMethod]
+        [TestMethod]        
         public void TestSalesSalaryWithoutSubordinates()
         {
             // arrange
@@ -90,12 +113,17 @@ namespace TaskTest
             decimal BaseSalary = 400M;
             DateTime DateJoined = new DateTime(2015, 1, 1);
             decimal EхpectedSalary = 416M;
+
             //act
+
             Sales s = new Sales(Name, BaseSalary, DateJoined);
+            
             decimal ActualSalary = s.Salary;
+
             // assert
+            if (s.ErrorMessage != "") { Assert.Fail(s.ErrorMessage); }
             Assert.AreEqual(EхpectedSalary, ActualSalary);
-        }
+        }        
         [TestMethod]
         public void TestSalesLongWorkSalaryWitoutSubordinates()
         {
@@ -104,10 +132,14 @@ namespace TaskTest
             decimal BaseSalary = 400M;
             DateTime DateJoined = new DateTime(1975, 1, 1);
             decimal EхpectedSalary = 540M;
+
             //act
+
             Sales s = new Sales(Name, BaseSalary, DateJoined);
             decimal ActualSalary = s.Salary;
+
             // assert
+            if (s.ErrorMessage != "") { Assert.Fail(s.ErrorMessage); }
             Assert.AreEqual(EхpectedSalary, ActualSalary);
         }
         [TestMethod]
@@ -126,13 +158,18 @@ namespace TaskTest
             Employee e2 = new Employee(Name, BaseSalaryEmployee2, DateJoined);
             e2.Supervisor = m;
             decimal EхpectedSalary = 417.68M;
+
             //act
+
             Sales s = new Sales(Name, BaseSalary, DateJoined);
             m.Supervisor = s;
             decimal ActualSalary = s.Salary;
+
             // assert
+            if (m.ErrorMessage != "") { Assert.Fail(m.ErrorMessage); }
+            if (e1.ErrorMessage != "") { Assert.Fail(e1.ErrorMessage); }
+            if (e2.ErrorMessage != "") { Assert.Fail(e2.ErrorMessage); }
             Assert.AreEqual(EхpectedSalary, ActualSalary);
         }
-    }
+    }    
 }
-
